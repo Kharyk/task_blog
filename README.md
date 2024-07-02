@@ -1,6 +1,6 @@
 # task_blog
 
-Pos:
+Post:
     title CharField
     content TextField
     published_date DateTimeField(blank=True, null=True)
