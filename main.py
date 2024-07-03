@@ -14,10 +14,10 @@ def main():
             'If you want to add a post, Press 2\n'
             'If you want to display all users, Press 3\n'
             'If you want to display all posts, Press 4\n'
-            'If you want to display all user posts, Press 5\n'
-            'If you want to display all users posts, Press 6\n'
-            'If you want to see more info about author, Press 7\n'
-            'If you want to see more info about post, Press 8\n'
+            'If you want to display all users who did these posts, Press 5\n'
+            'If you want to display all user posts, Press 6\n'
+            'If you want to see more info about the author, Press 7\n'
+            'If you want to see more info about the post, Press 8\n'
             'If you want to exit Press 0\n'
         )
 
