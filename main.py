@@ -1,5 +1,10 @@
-from blog.models import Post, Author
-from blog.views import post_list, author_list, author_detail, post_detail, posts_by_author, authors_by_post
+import os
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'blog.settings')
+import django
+django.setup()
+
+from blogstart.models import Post, Author, PostAuthor
+from blogstart.views import post_list, author_list, author_detail, post_detail, posts_by_author, authors_by_post
 
 def main():
     while True:
