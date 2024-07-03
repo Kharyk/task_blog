@@ -1,60 +1,62 @@
-from blogstart.models import Post, Author
-from blogstart.views import post_list, author_list, user_detail, post_detail, post_by_author, author_by_post
+from blog.models import Post, Author
+from blog.views import post_list, author_list, author_detail, post_detail, posts_by_author, authors_by_post
 
-while inquiry != 0:
-    
-    inquiry = input(str('Hallo\nIf you want to add a user, Press 1\nIf you want to add a post, Press 2\nIf you want to display all users, Press 3\nIf you want to display all posts, Press 4\nIf you want to display all user posts, Press 5\nIf you want to display all users posts, Press 6\nIf you want to see more info about author, Press 7\nIf you want to see more info about post, Press 8\nIf you want to exit Press 0'))
-   
-    if inquiry == 1:
-        
-        name = input(str('Enter the name of the user: '))
-        email = input(str('Enter the email of the user: '))
-       
-        author_add = Author(
-            name=name,
-            email=email
+def main():
+    while True:
+        inquiry = input(
+            'Hallo\n'
+            'If you want to add a user, Press 1\n'
+            'If you want to add a post, Press 2\n'
+            'If you want to display all users, Press 3\n'
+            'If you want to display all posts, Press 4\n'
+            'If you want to display all user posts, Press 5\n'
+            'If you want to display all users posts, Press 6\n'
+            'If you want to see more info about author, Press 7\n'
+            'If you want to see more info about post, Press 8\n'
+            'If you want to exit Press 0\n'
         )
-        author_add.save()
+
+        if inquiry == '0':
+            break
         
-        print("User added.")
+        elif inquiry == '1':
+            name = input('Enter the name of the user: ')
+            email = input('Enter the email of the user: ')
+            author = Author(name=name, email=email)
+            author.save()
+            print("User added.")
         
-    if inquiry == 2:
+        elif inquiry == '2':
+            title = input('Enter the title of the post: ')
+            content = input('Enter the content of the post: ')
+            published_date = input('Enter the published date (if not, the date will be today automatically): ')
+            post = Post(title=title, content=content, published_date=published_date)
+            post.save()
+            print('Post added.')
         
-        title = input(str('Enter the title of the post: '))
-        content = input(str('Enter the content of the post: '))
-        published_date = input(str('Enter the published date(if not the date will be today, automatically):'))
+        elif inquiry == '3':
+            for author in Author.objects.all():
+                print(f"Name: {author.name}, Email: {author.email}")
         
-        post_add = Post(
-            title= title,
-            content= content,
-            published_date= published_date
-        )
-        post_add.save()
+        elif inquiry == '4':
+            for post in Post.objects.all():
+                print(f"Title: {post.title}, Published Date: {post.published_date}")
         
-        print('Post added.')
+        elif inquiry == '5':
+            author_id = input('Enter the author ID: ')
+            posts_by_author(author_id)
         
-    if inquiry == 3:
+        elif inquiry == '6':
+            post_id = input('Enter the post ID: ')
+            authors_by_post(post_id)
         
-        post_list()
+        elif inquiry == '7':
+            author_id = input('Enter the author ID: ')
+            author_detail(author_id)
         
-    if inquiry == 4:
-        
-        author_list()
-        
-    if inquiry == 5:
-        
-        post_by_author()
-        
-    if inquiry == 6:
-        
-        author_by_post()
-        
-""" if inquiry == 7:
-        
-        user_detail()
-        
-    if inquiry == 8:
-        
-        post_detail()"""
-       
-    
+        elif inquiry == '8':
+            post_id = input('Enter the post ID: ')
+            post_detail(post_id)
+
+if __name__ == "__main__":
+    main()
