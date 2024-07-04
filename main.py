@@ -17,7 +17,11 @@ def main():
             'If you want to display all users who did these posts, Press 5\n'
             'If you want to display all user posts, Press 6\n'
             'If you want to see more info about the author, Press 7\n'
+<<<<<<< HEAD
             'If you want to see more info about post, Press 8\n'
+=======
+            'If you want to see more info about the post, Press 8\n'
+>>>>>>> 502e5dc37385e6c8d586e1f91ba0525425a38eec
             'If you want to exit Press 0\n'
         )
 
