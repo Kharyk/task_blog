@@ -16,7 +16,14 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from blogstart import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', views.post_list, name='post_list'),
+    path('authors/', views.author_list, name='author_list'),
+    path('post/<pk>/', views.post_detail, name='post_detail'),
+    path('author/<pk>/', views.author_detail, name='author_detail'),
+    path('author/<pk>/posts/', views.posts_by_author, name='posts_by_author'),
+    path('post/<pk>/authors/', views.authors_by_post, name='authors_by_post'),
 ]
